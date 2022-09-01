@@ -1,0 +1,62 @@
+There are three friend living on the straight line Ox in Lineland. The first friend lives at the point x1, the second friend lives at the point x2, and the third friend lives at the point x3. They plan to celebrate the New Year together, so they need to meet at one point. What is the minimum total distance they have to travel in order to meet at some point and celebrate the New Year?
+
+It's guaranteed that the optimal answer is always integer.
+
+Input
+The first line of the input contains three distinct integers x1, x2 and x3 (1 ≤ x1, x2, x3 ≤ 100) — the coordinates of the houses of the first, the second and the third friends respectively.
+
+Output
+Print one integer — the minimum total distance the friends need to travel in order to meet together.
+
+
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+    int a,b,c,x;
+    cin>>a;
+    cin>>b;
+    cin>>c;
+    int max=a;
+    int min=a;
+    int mid=a;
+    if(a>b&&a>c)
+        max=a;
+    if(b>a&&b>c)
+        max=b;
+    if(c>a&&c>b)
+        max=c;
+   if(a<b&&a<c)
+      min=a;
+   else if(b<c)
+      min=b;
+   else
+      min=c;
+   if(min!=a && max!=a)
+    mid=a;
+    else if(min!=b && max!=b)
+    mid=b;
+    else
+    mid=c;
+    int min1=500;
+    int min2=500;
+    for(int i=min;i<mid-1;i++)
+    {
+        if(mid+max-min-i<min1)
+        min1=mid+max-min-i;
+    }
+    for(int i=mid;i<=max;i++)
+    {
+        if(max+i-min-mid<min2)
+        min2=max+i-min-mid;
+    }
+    if(min1<min2)
+    cout<<min1;
+    else if(min2<min1)
+    cout<<min2;
+    else
+    cout<<min1;
+ 
+    return 0;
+}
